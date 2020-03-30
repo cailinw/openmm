@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_742c2/fast"
-/usr/bin/make -f CMakeFiles/cmTC_742c2.dir/build.make CMakeFiles/cmTC_742c2.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_73a70/fast"
+/usr/bin/make -f CMakeFiles/cmTC_73a70.dir/build.make CMakeFiles/cmTC_73a70.dir/build
 make[1]: Entering directory '/home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_742c2.dir/CheckSymbolExists.c.o
-/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -m64  -fPIE   -o CMakeFiles/cmTC_742c2.dir/CheckSymbolExists.c.o   -c /home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_742c2
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_742c2.dir/link.txt --verbose=1
-/usr/bin/cc  -ffunction-sections -fdata-sections -fPIC -m64     -rdynamic CMakeFiles/cmTC_742c2.dir/CheckSymbolExists.c.o  -o cmTC_742c2 
-CMakeFiles/cmTC_742c2.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_73a70.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -ffunction-sections -fdata-sections -fPIC -m64  -fPIE   -o CMakeFiles/cmTC_73a70.dir/CheckSymbolExists.c.o   -c /home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_73a70
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73a70.dir/link.txt --verbose=1
+/usr/bin/cc  -ffunction-sections -fdata-sections -fPIC -m64     -rdynamic CMakeFiles/cmTC_73a70.dir/CheckSymbolExists.c.o  -o cmTC_73a70 
+CMakeFiles/cmTC_73a70.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text.main+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_742c2.dir/build.make:97: recipe for target 'cmTC_742c2' failed
-make[1]: *** [cmTC_742c2] Error 1
+CMakeFiles/cmTC_73a70.dir/build.make:97: recipe for target 'cmTC_73a70' failed
+make[1]: *** [cmTC_73a70] Error 1
 make[1]: Leaving directory '/home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_742c2/fast' failed
-make: *** [cmTC_742c2/fast] Error 2
+Makefile:126: recipe for target 'cmTC_73a70/fast' failed
+make: *** [cmTC_73a70/fast] Error 2
 
 File /home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,17 +36,17 @@ int main(int argc, char** argv)
 Performing C++ SOURCE FILE Test COMPILER_SUPPORTS_EXTRA_SEMI_WARNING failed with the following output:
 Change Dir: /home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_3aaf2/fast"
-/usr/bin/make -f CMakeFiles/cmTC_3aaf2.dir/build.make CMakeFiles/cmTC_3aaf2.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_c11e4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c11e4.dir/build.make CMakeFiles/cmTC_c11e4.dir/build
 make[1]: Entering directory '/home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_3aaf2.dir/src.cxx.o
-/usr/bin/c++    -ffunction-sections -fdata-sections -fPIC -m64 -Wimplicit-fallthrough -DCOMPILER_SUPPORTS_EXTRA_SEMI_WARNING -fPIE   -Wextra-semi -o CMakeFiles/cmTC_3aaf2.dir/src.cxx.o -c /home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp/src.cxx
+Building CXX object CMakeFiles/cmTC_c11e4.dir/src.cxx.o
+/usr/bin/c++    -ffunction-sections -fdata-sections -fPIC -m64 -Wimplicit-fallthrough -DCOMPILER_SUPPORTS_EXTRA_SEMI_WARNING -fPIE   -Wextra-semi -o CMakeFiles/cmTC_c11e4.dir/src.cxx.o -c /home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp/src.cxx
 c++: error: unrecognized command line option '-Wextra-semi'; did you mean '-Wextra'?
-CMakeFiles/cmTC_3aaf2.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_3aaf2.dir/src.cxx.o' failed
-make[1]: *** [CMakeFiles/cmTC_3aaf2.dir/src.cxx.o] Error 1
+CMakeFiles/cmTC_c11e4.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_c11e4.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_c11e4.dir/src.cxx.o] Error 1
 make[1]: Leaving directory '/home/caleb/Projects/openmm/platforms/emu/emu_openmm/target/debug/build/shaderc-sys-fff11662070dbdfa/out/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_3aaf2/fast' failed
-make: *** [cmTC_3aaf2/fast] Error 2
+Makefile:126: recipe for target 'cmTC_c11e4/fast' failed
+make: *** [cmTC_c11e4/fast] Error 2
 
 Source file was:
 int main() { return 0; }
