@@ -7,7 +7,7 @@ edition = "2018"
 [dependencies]
 emu_glsl = { path = "../emu_glsl" }
 futures = "0.3.4"
-zerocopy = "0.3.0"
+zerocopy = "0.2.8"
 
 [dependencies.emu_core]
 path = "../emu_core"
@@ -15,4 +15,4 @@ default-features = false
 features = ["glsl-compile"]
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["staticlib"]
