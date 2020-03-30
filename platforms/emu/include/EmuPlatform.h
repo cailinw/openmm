@@ -18,14 +18,16 @@ public:
     void contextCreated(ContextImpl& context, const std::map<std::string, std::string>& properties) const;
     void linkedContextCreated(ContextImpl& context, ContextImpl& originalContext) const;
     void contextDestroyed(ContextImpl& context) const;
+    int numContexts;
 };
 
 class OPENMM_EXPORT_COMMON EmuPlatform::PlatformData {
 public:
-    PlatformData(const System& system);
+    PlatformData(const System& system, ContextImpl* context);
     ~PlatformData();
 
     // TODO: Implement this
+    int dataID;
     
 };
 
