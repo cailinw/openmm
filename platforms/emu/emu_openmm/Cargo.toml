@@ -8,6 +8,7 @@ edition = "2018"
 emu_glsl = { path = "../emu_glsl" }
 futures = "0.3.4"
 zerocopy = "0.2.8"
+lazy_static = "1.4.0"
 
 [dependencies.emu_core]
 path = "../emu_core"

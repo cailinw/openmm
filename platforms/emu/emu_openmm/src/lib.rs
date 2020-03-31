@@ -2,6 +2,21 @@ use emu_core::prelude::*;
 use emu_glsl::*;
 use zerocopy::*;
 
+use std::sync::Mutex;
+use std::collections::HashMap;
+
+#[macro_use]
+extern crate lazy_static;
+
+// example usage: https://stackoverflow.com/questions/27791532/how-do-i-create-a-global-mutable-singleton
+lazy_static! {
+    static ref CONTEXTS: Mutex<HashMap<i32, Context>> = Mutex::new(HashMap::new());
+}
+
+struct Context {
+    
+}
+
 #[repr(C)]
 #[derive(AsBytes, FromBytes, Copy, Clone, Default, Debug, GlslStruct)]
 struct Shape {
