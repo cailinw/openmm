@@ -3,6 +3,8 @@
 
 #include "EmuPlatform.h"
 #include "openmm/kernels.h"
+#include "ReferenceVerletDynamics.h"
+#include "openmm/Integrator.h"
 
 namespace OpenMM {
 
@@ -203,6 +205,44 @@ public:
      * @param context    the context in which to execute this kernel
      */
     void computePositions(ContextImpl& context);
+};
+    
+
+/**
+ * This kernel is invoked by VerletIntegrator to take one time step.
+ */
+class EmuIntegrateVerletStepKernel : public IntegrateVerletStepKernel {
+public:
+    EmuIntegrateVerletStepKernel(std::string name, const Platform& platform, EmuPlatform::PlatformData& data) : IntegrateVerletStepKernel(name, platform),
+        data(data), dynamics(0) {
+    }
+    ~EmuIntegrateVerletStepKernel();
+    /**
+     * Initialize the kernel.
+     * 
+     * @param system     the System this kernel will be applied to
+     * @param integrator the VerletIntegrator this kernel will be used for
+     */
+    void initialize(const System& system, const VerletIntegrator& integrator);
+    /**
+     * Execute the kernel.
+     * 
+     * @param context    the context in which to execute this kernel
+     * @param integrator the VerletIntegrator this kernel is being used for
+     */
+    void execute(ContextImpl& context, const VerletIntegrator& integrator);
+    /**
+     * Compute the kinetic energy.
+     * 
+     * @param context    the context in which to execute this kernel
+     * @param integrator the VerletIntegrator this kernel is being used for
+     */
+    double computeKineticEnergy(ContextImpl& context, const VerletIntegrator& integrator);
+private:
+    EmuPlatform::PlatformData& data;
+    ReferenceVerletDynamics* dynamics;
+    std::vector<double> masses;
+    double prevStepSize;
 };
 
 } // namespace OpenMM
