@@ -94,6 +94,7 @@ INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # do Rust stuff
 
+# TODO maybe add something here that calls cargo build in emu_openmm before doing all this
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/platforms/emu/cmake/")
 # enable_language(Rust)
 include(CMakeCargo)

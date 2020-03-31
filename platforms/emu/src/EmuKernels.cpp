@@ -8,9 +8,9 @@ using namespace OpenMM;
 using namespace std;
 
 
-static int getDataId(const ContextImpl& context) {
+static int getContextId(const ContextImpl& context) {
 	const EmuPlatform::PlatformData* data = reinterpret_cast<const EmuPlatform::PlatformData*>(context.getPlatformData());
-    return data->dataId;
+    return data->contextId;
 }
 
 void EmuCalcForcesAndEnergyKernel::initialize(const System& system) {
@@ -29,83 +29,83 @@ void EmuUpdateStateDataKernel::initialize(const System& system) {
 }
 
 double EmuUpdateStateDataKernel::getTime(const ContextImpl& context) const {
-	int dataId = getDataId(context);
+	int contextId = getContextId(context);
 
 	// TODO: Implement this
-	// Call rust function and pass 'dataId' to return time
+	// Call rust function and pass 'contextId' to return time
 
     return 0.0;
 
 }
 
 void EmuUpdateStateDataKernel::setTime(ContextImpl& context, double time) {
-    int dataId = getDataId(context);
+    int contextId = getContextId(context);
 
     // TODO: Implement this
-    // Call rust function and pass 'dataId', 'time'
+    // Call rust function and pass 'contextId', 'time'
 
 }
 
 void EmuUpdateStateDataKernel::getPositions(ContextImpl& context, std::vector<Vec3>& positions) {
-	int dataId = getDataId(context);
+	int contextId = getContextId(context);
 
     int numParticles = context.getSystem().getNumParticles();
     positions.resize(numParticles);
 
     // TODO: Implement this
-    // Call rust function and pass 'dataId', 'positions', 'numParticles'
+    // Call rust function and pass 'contextId', 'positions', 'numParticles'
 }
 
 void EmuUpdateStateDataKernel::setPositions(ContextImpl& context, const std::vector<Vec3>& positions) {
-	int dataId = getDataId(context);
+	int contextId = getContextId(context);
     int numParticles = context.getSystem().getNumParticles();
     
     // TODO: Implement this
-    // Call rust function and pass 'dataId', 'positions', 'numParticles'
+    // Call rust function and pass 'contextId', 'positions', 'numParticles'
 }
 
 void EmuUpdateStateDataKernel::getVelocities(ContextImpl& context, std::vector<Vec3>& velocities) {
-	int dataId = getDataId(context);
+	int contextId = getContextId(context);
     int numParticles = context.getSystem().getNumParticles();
     velocities.resize(numParticles);
 
     // TODO: Implement this
-    // Call rust function and pass 'dataId', 'numParticles', 'velocities'
+    // Call rust function and pass 'contextId', 'numParticles', 'velocities'
 }
 
 void EmuUpdateStateDataKernel::setVelocities(ContextImpl& context, const std::vector<Vec3>& velocities) {
-	int dataId = getDataId(context);
+	int contextId = getContextId(context);
     int numParticles = context.getSystem().getNumParticles();
 
     // TODO: Implement this
-    // Call rust function and pass 'dataId', 'numParticles', 'velocities'
+    // Call rust function and pass 'contextId', 'numParticles', 'velocities'
 }
 
 void EmuUpdateStateDataKernel::getForces(ContextImpl& context, std::vector<Vec3>& forces) {
-    int dataId = getDataId(context);
+    int contextId = getContextId(context);
     int numParticles = context.getSystem().getNumParticles();
     forces.resize(numParticles);
 
     // TODO: Implement this
-    // Call rust function and pass 'dataId', 'numParticles', 'forces'
+    // Call rust function and pass 'contextId', 'numParticles', 'forces'
 }
 
 void EmuUpdateStateDataKernel::getEnergyParameterDerivatives(ContextImpl& context, map<string, double>& derivs) {
-	int dataId = getDataId(context);
+	int contextId = getContextId(context);
 
     // TODO: Implement this
-    // Call rust function and pass 'dataId', 'derivs'
+    // Call rust function and pass 'contextId', 'derivs'
 }
 
 void EmuUpdateStateDataKernel::getPeriodicBoxVectors(ContextImpl& context, Vec3& a, Vec3& b, Vec3& c) const {
-    int dataId = getDataId(context);
+    int contextId = getContextId(context);
 
     // TODO: Implement this
     // Call rust function
 }
 
 void EmuUpdateStateDataKernel::setPeriodicBoxVectors(ContextImpl& context, const Vec3& a, const Vec3& b, const Vec3& c) {
-    int dataId = getDataId(context);
+    int contextId = getContextId(context);
 
     // TODO: Implement this
     // Call rust function

@@ -1,4 +1,5 @@
 #include "EmuPlatform.h"
+#include "EmuKernels.h"
 #include "EmuKernelFactory.h"
 #include "openmm/internal/ContextImpl.h"
 #include "emu_openmm.h"
