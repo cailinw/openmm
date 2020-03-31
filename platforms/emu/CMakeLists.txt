@@ -92,6 +92,13 @@ ENDFOREACH(subdir)
 
 INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
+# do Rust stuff
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/platforms/emu/cmake/")
+# enable_language(Rust)
+include(CMakeCargo)
+add_subdirectory(emu_openmm)
+
 # Install headers
 
 FILE(GLOB CORE_HEADERS include/*.h)

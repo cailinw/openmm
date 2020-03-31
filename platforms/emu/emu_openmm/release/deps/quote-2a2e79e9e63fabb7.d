@@ -1,0 +1,13 @@
+/home/caleb/Projects/openmm/platforms/emu/emu_openmm/release/deps/quote-2a2e79e9e63fabb7.rmeta: /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/lib.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/ext.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/format.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/ident_fragment.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/to_tokens.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/runtime.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/spanned.rs
+
+/home/caleb/Projects/openmm/platforms/emu/emu_openmm/release/deps/libquote-2a2e79e9e63fabb7.rlib: /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/lib.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/ext.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/format.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/ident_fragment.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/to_tokens.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/runtime.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/spanned.rs
+
+/home/caleb/Projects/openmm/platforms/emu/emu_openmm/release/deps/quote-2a2e79e9e63fabb7.d: /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/lib.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/ext.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/format.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/ident_fragment.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/to_tokens.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/runtime.rs /home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/spanned.rs
+
+/home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/lib.rs:
+/home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/ext.rs:
+/home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/format.rs:
+/home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/ident_fragment.rs:
+/home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/to_tokens.rs:
+/home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/runtime.rs:
+/home/caleb/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.3/src/spanned.rs:
