@@ -3,10 +3,10 @@
 
 #include "EmuPlatform.h"
 #include "openmm/kernels.h"
-#include "ReferenceVerletDynamics.h"
-#include "openmm/Integrator.h"
 
 namespace OpenMM {
+    
+class ReferenceVerletDynamics;
 
 // TODO: Implement this
 
