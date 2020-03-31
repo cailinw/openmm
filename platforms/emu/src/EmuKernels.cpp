@@ -145,20 +145,20 @@ void EmuVirtualSitesKernel::computePositions(ContextImpl& context) {
     // TODO: Implement this
 }
 
-ReferenceIntegrateVerletStepKernel::~ReferenceIntegrateVerletStepKernel() {
+EmuIntegrateVerletStepKernel::~EmuIntegrateVerletStepKernel() {
     if (dynamics)
         delete dynamics;
 }
 
-void ReferenceIntegrateVerletStepKernel::initialize(const System& system, const VerletIntegrator& integrator) {
+void EmuIntegrateVerletStepKernel::initialize(const System& system, const VerletIntegrator& integrator) {
     // TODO: Implement this
 }
 
-void ReferenceIntegrateVerletStepKernel::execute(ContextImpl& context, const VerletIntegrator& integrator) {
+void EmuIntegrateVerletStepKernel::execute(ContextImpl& context, const VerletIntegrator& integrator) {
     // TODO: Implement this
 }
 
-double ReferenceIntegrateVerletStepKernel::computeKineticEnergy(ContextImpl& context, const VerletIntegrator& integrator) {
+double EmuIntegrateVerletStepKernel::computeKineticEnergy(ContextImpl& context, const VerletIntegrator& integrator) {
     // TODO: Implement this
     return 0.0;
 }
