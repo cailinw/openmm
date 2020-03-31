@@ -13,13 +13,13 @@ KernelImpl* EmuKernelFactory::createKernelImpl(std::string name, const Platform&
     // Depending on given name, create and return a new KernelImpl object
 
     // if (name == CalcForcesAndEnergyKernel::Name())
-    //     return new EmuParallelCalcForcesAndEnergyKernel(name, platform, contextId);
+    //     return new EmuCalcForcesAndEnergyKernel(name, platform);
     // if (name == UpdateStateDataKernel::Name())
-    //     return new EmuUpdateStateDataKernel(name, platform, contextId);
+    //     return new EmuUpdateStateDataKernel(name, platform);
     // if (name == ApplyConstraintsKernel::Name())
-    //     return new EmuApplyConstraintsKernel(name, platform, contextId);
+    //     return new EmuApplyConstraintsKernel(name, platform);
     // if (name == VirtualSitesKernel::Name())
-    //     return new EmuVirtualSitesKernel(name, contextId);
+    //     return new EmuVirtualSitesKernel(name);
 
     throw OpenMMException((std::string("Tried to create kernel with illegal kernel name '") + name + "'").c_str());
 }
