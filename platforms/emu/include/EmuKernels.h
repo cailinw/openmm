@@ -15,7 +15,7 @@ namespace OpenMM {
  */
 class EmuUpdateStateDataKernel : public UpdateStateDataKernel {
 public:
-    EmuUpdateStateDataKernel(std::string name, const Platform& platform, EmuPlatform::PlatformData& data) : UpdateStateDataKernel(name, platform), data(data) {
+    EmuUpdateStateDataKernel(std::string name, const Platform& platform, int contextId) : UpdateStateDataKernel(name, platform), contextId(contextId) {
     }
     /**
      * Initialize the kernel.
@@ -100,7 +100,7 @@ public:
      */
     void loadCheckpoint(ContextImpl& context, std::istream& stream);
 private:
-    EmuPlatform::PlatformData& data;
+    int contextId;
 };
 
 

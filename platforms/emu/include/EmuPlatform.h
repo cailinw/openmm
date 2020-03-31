@@ -30,11 +30,11 @@ public:
 
 class OPENMM_EXPORT_EMU EmuPlatform::PlatformData {
 public:
-    PlatformData(const System& system, int num_contexts);
+    PlatformData(const System& system, int contextId);
     ~PlatformData();
 
     // TODO: Implement this
-    int dataId;
+    int contextId;
     
 };
 

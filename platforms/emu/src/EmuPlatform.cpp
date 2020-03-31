@@ -22,8 +22,10 @@ EmuPlatform::EmuPlatform() : numContexts(0) {
     
     // TODO: Implement this
     // For each kernel, registerKernelFactory()
-    //registerKernelFactory(CalcForcesAndEnergyKernel::Name(), factory);
+    // registerKernelFactory(CalcForcesAndEnergyKernel::Name(), factory);
     // registerKernelFactory(UpdateStateDataKernel::Name(), factory);
+    // registerKernelFactory(ApplyConstraintsKernel::Name(), factory);
+    // registerKernelFactory(VirtualSitesKernel::Name(), factory);
 
 }
 
@@ -65,12 +67,10 @@ void EmuPlatform::contextDestroyed(ContextImpl& context) const {
     delete data;
 }
 
-EmuPlatform::PlatformData::PlatformData(const System& system, int num_contexts) : 
-                                        dataId(num_contexts) {
+EmuPlatform::PlatformData::PlatformData(const System& system, int contextId) : 
+                                        contextId(contextId) {
 
-	// TODO: Implement this
-
-
+    // TODO: Implement this
 }
 
 EmuPlatform::PlatformData::~PlatformData() {
