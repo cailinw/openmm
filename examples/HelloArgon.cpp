@@ -11,6 +11,7 @@
 // other visualization tool to produce an animation of the resulting trajectory.
 // -----------------------------------------------------------------------------
 
+#include "openmm/Platform.h"
 #include "OpenMM.h"
 #include <cstdio>
 
@@ -26,44 +27,44 @@ void simulateArgon()
 
     // Create a system with nonbonded forces.
     OpenMM::System system;
-    // OpenMM::NonbondedForce* nonbond = new OpenMM::NonbondedForce(); 
-    // system.addForce(nonbond);
+    OpenMM::NonbondedForce* nonbond = new OpenMM::NonbondedForce(); 
+    system.addForce(nonbond);
 
-    // // Create three atoms.
-    // std::vector<OpenMM::Vec3> initPosInNm(3);
-    // for (int a = 0; a < 3; ++a) 
-    // {
-    //     initPosInNm[a] = OpenMM::Vec3(0.5*a,0,0); // location, nm
+    // Create three atoms.
+    std::vector<OpenMM::Vec3> initPosInNm(3);
+    for (int a = 0; a < 3; ++a) 
+    {
+        initPosInNm[a] = OpenMM::Vec3(0.5*a,0,0); // location, nm
 
-    //     system.addParticle(39.95); // mass of Ar, grams per mole
+        system.addParticle(39.95); // mass of Ar, grams per mole
 
-    //     // charge, L-J sigma (nm), well depth (kJ)
-    //     nonbond->addParticle(0.0, 0.3350, 0.996); // vdWRad(Ar)=.188 nm
-    // }
+        // charge, L-J sigma (nm), well depth (kJ)
+        nonbond->addParticle(0.0, 0.3350, 0.996); // vdWRad(Ar)=.188 nm
+    }
 
     OpenMM::VerletIntegrator integrator(0.004); // step size in ps
 
     // Let OpenMM Context choose best platform.
-    OpenMM::Context context(system, integrator);
-    // printf( "REMARK  Using OpenMM platform %s\n", 
-    //     context.getPlatform().getName().c_str() );
+    OpenMM::Context context(system, integrator, OpenMM::Platform::getPlatformByName("EMU"));
+    printf( "REMARK  Using OpenMM platform %s\n", 
+        context.getPlatform().getName().c_str() );
 
-    // // Set starting positions of the atoms. Leave time and velocity zero.
-    // context.setPositions(initPosInNm);
+    // Set starting positions of the atoms. Leave time and velocity zero.
+    context.setPositions(initPosInNm);
 
-    // // Simulate.
-    // for (int frameNum=1; ;++frameNum) {
-    //     // Output current state information.
-    //     OpenMM::State state    = context.getState(OpenMM::State::Positions);
-    //     const double  timeInPs = state.getTime();
-    //     writePdbFrame(frameNum, state); // output coordinates
+    // Simulate.
+    for (int frameNum=1; ;++frameNum) {
+        // Output current state information.
+        OpenMM::State state    = context.getState(OpenMM::State::Positions);
+        const double  timeInPs = state.getTime();
+        writePdbFrame(frameNum, state); // output coordinates
 
-    //     if (timeInPs >= 10.)
-    //         break;
+        if (timeInPs >= 10.)
+            break;
 
-    //     // Advance state many steps at a time, for efficient use of OpenMM.
-    //     integrator.step(10); // (use a lot more than this normally)
-    // }
+        // Advance state many steps at a time, for efficient use of OpenMM.
+        integrator.step(10); // (use a lot more than this normally)
+    }
 }
 
 int main() 

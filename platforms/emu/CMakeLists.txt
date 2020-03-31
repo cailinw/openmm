@@ -12,11 +12,11 @@
 #   libOpenMMEmu_static.a
 #----------------------------------------------------
 
-SET(OPENMM_BUILD_EMU_TESTS TRUE CACHE BOOL "Whether to build Emu platform test cases")
-MARK_AS_ADVANCED(OPENMM_BUILD_Emu_TESTS)
-IF(BUILD_TESTING AND OPENMM_BUILD_Emu_TESTS)
-    SUBDIRS(tests)
-ENDIF(BUILD_TESTING AND OPENMM_BUILD_Emu_TESTS)
+# SET(OPENMM_BUILD_EMU_TESTS TRUE CACHE BOOL "Whether to build Emu platform test cases")
+# MARK_AS_ADVANCED(OPENMM_BUILD_EMU_TESTS)
+# IF(BUILD_TESTING AND OPENMM_BUILD_EMU_TESTS)
+#     SUBDIRS(tests)
+# ENDIF(BUILD_TESTING AND OPENMM_BUILD_EMU_TESTS)
 
 # The source is organized into subdirectories, but we handle them all from
 # this CMakeLists file rather than letting CMake visit them as SUBDIRS.
@@ -43,7 +43,7 @@ ENDIF(CMAKE_COMPILER_IS_CLANGXX AND CLANG_VERSION_STRING STREQUAL "3.6")
 # Collect up information about the version of the OpenMM library we're building
 # and make it available to the code so it can be built into the binaries.
 
-SET(OPENMMEMU_LIBRARY_NAME OpenMMEmu)
+SET(OPENMMEMU_LIBRARY_NAME OpenMMEMU)
 
 SET(SHARED_TARGET ${OPENMMEMU_LIBRARY_NAME})
 SET(STATIC_TARGET ${OPENMMEMU_LIBRARY_NAME}_static)
@@ -91,6 +91,13 @@ FOREACH(subdir ${OPENMM_SOURCE_SUBDIRS})
 ENDFOREACH(subdir)
 
 INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+# do Rust stuff
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/platforms/emu/cmake/")
+# enable_language(Rust)
+include(CMakeCargo)
+add_subdirectory(emu_openmm)
 
 # Install headers
 

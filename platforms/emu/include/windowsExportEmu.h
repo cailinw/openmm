@@ -28,9 +28,9 @@
     // Keep MS VC++ quiet about lack of dll export of private members.
     #pragma warning(disable:4251)
     // TODO maybe define EMU equivalents of OPENMM_CPU_BUILDING_SHARED_LIBRARY, etc.
-    #if defined(OPENMM_CPU_BUILDING_SHARED_LIBRARY)
+    #if defined(OPENMM_EMU_BUILDING_SHARED_LIBRARY)
         #define OPENMM_EXPORT_EMU __declspec(dllexport)
-    #elif defined(OPENMM_CPU_BUILDING_STATIC_LIBRARY) || defined(OPENMM_CPU_USE_STATIC_LIBRARIES)
+    #elif defined(OPENMM_EMU_BUILDING_STATIC_LIBRARY) || defined(OPENMM_EMU_USE_STATIC_LIBRARIES)
         #define OPENMM_EXPORT_EMU
     #else
         #define OPENMM_EXPORT_EMU __declspec(dllimport)   // i.e., a client of a shared library
