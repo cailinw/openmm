@@ -21,6 +21,7 @@ void writePdbFrame(int frameNum, const OpenMM::State&);
 
 void simulateArgon()
 {
+
     // Load any shared libraries containing GPU implementations.
     OpenMM::Platform::loadPluginsFromDirectory(
         OpenMM::Platform::getDefaultPluginsDirectory());

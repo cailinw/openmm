@@ -96,14 +96,14 @@ INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # TODO maybe add something here that calls cargo build in emu_openmm before doing all this
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/platforms/emu/cmake/")
-# enable_language(Rust)
 include(CMakeCargo)
-add_subdirectory(emu_openmm)
 
 # Install headers
 
 FILE(GLOB CORE_HEADERS include/*.h)
 INSTALL_FILES(/include/openmm/emu FILES ${CORE_HEADERS})
+
+add_subdirectory(emu_openmm)
 
 IF(OPENMM_BUILD_SHARED_LIB)
     SUBDIRS (sharedTarget)

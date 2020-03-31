@@ -22,7 +22,7 @@ KernelImpl* EmuKernelFactory::createKernelImpl(std::string name, const Platform&
     if (name == VirtualSitesKernel::Name())
         return new EmuVirtualSitesKernel(name, platform);
     if (name == IntegrateVerletStepKernel::Name())
-        return new EmuIntegrateVerletStepKernel(name, platform);
+        return new EmuIntegrateVerletStepKernel(name, platform, data);
 
     throw OpenMMException((std::string("Tried to create kernel with illegal kernel name '") + name + "'").c_str());
 }
