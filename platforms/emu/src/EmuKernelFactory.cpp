@@ -16,11 +16,11 @@ KernelImpl* EmuKernelFactory::createKernelImpl(std::string name, const Platform&
     if (name == CalcForcesAndEnergyKernel::Name())
         return new EmuCalcForcesAndEnergyKernel(name, platform);
     if (name == UpdateStateDataKernel::Name())
-        return new EmuUpdateStateDataKernel(name, platform);
+        return new EmuUpdateStateDataKernel(name, platform, data);
     if (name == ApplyConstraintsKernel::Name())
-        return new EmuApplyConstraintsKernel(name, platform);
+        return new EmuApplyConstraintsKernel(name, platform, data);
     if (name == VirtualSitesKernel::Name())
-        return new EmuVirtualSitesKernel(name);
+        return new EmuVirtualSitesKernel(name, platform);
 
     throw OpenMMException((std::string("Tried to create kernel with illegal kernel name '") + name + "'").c_str());
 }
