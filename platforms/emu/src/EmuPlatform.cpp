@@ -1,16 +1,17 @@
 #include "EmuPlatform.h"
+#include "EmuKernelFactory.h"
 #include "openmm/internal/ContextImpl.h"
 
 using namespace OpenMM;
 using namespace std;
 
 
-#ifdef OPENMM_COMMON_BUILDING_STATIC_LIBRARY
+#ifdef OPENMM_EMU_BUILDING_STATIC_LIBRARY
 extern "C" void registerEmuPlatform() {
     Platform::registerPlatform(new EmuPlatform());
 }
 #else
-extern "C" OPENMM_EXPORT_COMMON void registerPlatforms() {
+extern "C" OPENMM_EXPORT_EMU void registerPlatforms() {
     Platform::registerPlatform(new EmuPlatform());
 }
 #endif
@@ -22,7 +23,7 @@ EmuPlatform::EmuPlatform() : numContexts(0) {
     // TODO: Implement this
     // For each kernel, registerKernelFactory()
     //registerKernelFactory(CalcForcesAndEnergyKernel::Name(), factory);
-    registerKernelFactory(UpdateStateDataKernel::Name(), factory);
+    // registerKernelFactory(UpdateStateDataKernel::Name(), factory);
 
 }
 
@@ -45,13 +46,13 @@ bool EmuPlatform::supportsDoublePrecision() const {
 // setPropertyDefaultValue()
 
 
-void EmuPlatform::contextCreated(ContextImpl& context, const map<string, string>& properties) const {
+void EmuPlatform::contextCreated(ContextImpl& context, const map<string, string>& properties) {
 
 	// TODO: Implement this
     // Initialize data and allocate space
 
 
-    context.setPlatformData(new PlatformData(context.getSystem()), numContexts);
+    context.setPlatformData(new PlatformData(context.getSystem(), numContexts));
     numContexts += 1;
 }
 
@@ -64,9 +65,8 @@ void EmuPlatform::contextDestroyed(ContextImpl& context) const {
     delete data;
 }
 
-EmuPlatform::PlatformData::PlatformData(const System& system, int nextDataId) : context(context),
-                                        time(0.0), stepCount(0), numParticles(system.getNumParticles()),
-                                        dataId(nextDataId) {
+EmuPlatform::PlatformData::PlatformData(const System& system, int num_contexts) : 
+                                        dataId(num_contexts) {
 
 	// TODO: Implement this
 

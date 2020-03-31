@@ -15,7 +15,7 @@ namespace OpenMM {
  */
 class EmuUpdateStateDataKernel : public UpdateStateDataKernel {
 public:
-    EmuUpdateStateDataKernel(std::string name, const Platform& platform, ReferencePlatform::PlatformData& data) : UpdateStateDataKernel(name, platform), data(data) {
+    EmuUpdateStateDataKernel(std::string name, const Platform& platform, EmuPlatform::PlatformData& data) : UpdateStateDataKernel(name, platform), data(data) {
     }
     /**
      * Initialize the kernel.
