@@ -1,6 +1,7 @@
 #include "EmuPlatform.h"
 #include "EmuKernelFactory.h"
 #include "openmm/internal/ContextImpl.h"
+#include "emu_openmm.h"
 
 using namespace OpenMM;
 using namespace std;
@@ -22,10 +23,10 @@ EmuPlatform::EmuPlatform() : numContexts(0) {
     
     // TODO: Implement this
     // For each kernel, registerKernelFactory()
-    // registerKernelFactory(CalcForcesAndEnergyKernel::Name(), factory);
-    // registerKernelFactory(UpdateStateDataKernel::Name(), factory);
-    // registerKernelFactory(ApplyConstraintsKernel::Name(), factory);
-    // registerKernelFactory(VirtualSitesKernel::Name(), factory);
+    registerKernelFactory(CalcForcesAndEnergyKernel::Name(), factory);
+    registerKernelFactory(UpdateStateDataKernel::Name(), factory);
+    registerKernelFactory(ApplyConstraintsKernel::Name(), factory);
+    registerKernelFactory(VirtualSitesKernel::Name(), factory);
 
 }
 
