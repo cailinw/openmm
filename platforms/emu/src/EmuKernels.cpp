@@ -1,5 +1,7 @@
 #include "EmuKernels.h"
 #include "emu_openmm.h"
+#include "ReferenceVerletDynamics.h"
+#include "openmm/Integrator.h"
 
 
 // TODO: Implement this
@@ -141,4 +143,22 @@ void EmuVirtualSitesKernel::initialize(const System& system) {
 
 void EmuVirtualSitesKernel::computePositions(ContextImpl& context) {
     // TODO: Implement this
+}
+
+ReferenceIntegrateVerletStepKernel::~ReferenceIntegrateVerletStepKernel() {
+    if (dynamics)
+        delete dynamics;
+}
+
+void ReferenceIntegrateVerletStepKernel::initialize(const System& system, const VerletIntegrator& integrator) {
+    // TODO: Implement this
+}
+
+void ReferenceIntegrateVerletStepKernel::execute(ContextImpl& context, const VerletIntegrator& integrator) {
+    // TODO: Implement this
+}
+
+double ReferenceIntegrateVerletStepKernel::computeKineticEnergy(ContextImpl& context, const VerletIntegrator& integrator) {
+    // TODO: Implement this
+    return 0.0;
 }
