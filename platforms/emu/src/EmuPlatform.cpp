@@ -61,9 +61,7 @@ bool EmuPlatform::supportsDoublePrecision() const {
 
 void EmuPlatform::contextCreated(ContextImpl& context, const map<string, string>& properties) {
 
-	// TODO: Implement this
-    // Initialize data and allocate space
-
+    data_initialize(numContexts, context.getSystem().getNumParticles());
 
     context.setPlatformData(new PlatformData(context.getSystem(), numContexts));
     numContexts += 1;

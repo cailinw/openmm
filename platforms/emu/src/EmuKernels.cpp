@@ -34,7 +34,7 @@ void EmuUpdateStateDataKernel::initialize(const System& system) {
 double EmuUpdateStateDataKernel::getTime(const ContextImpl& context) const {
 	int contextId = getContextId(context);
 
-	return getTime(contextId);
+	return get_time(contextId);
 
 }
 
