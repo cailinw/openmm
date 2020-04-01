@@ -2,6 +2,7 @@
 #include "emu_openmm.h"
 #include "ReferenceVerletDynamics.h"
 #include "openmm/Integrator.h"
+#include "openmm/Vec3.h"
 
 
 // TODO: Implement this
@@ -33,18 +34,14 @@ void EmuUpdateStateDataKernel::initialize(const System& system) {
 double EmuUpdateStateDataKernel::getTime(const ContextImpl& context) const {
 	int contextId = getContextId(context);
 
-	// TODO: Implement this
-	// Call rust function and pass 'contextId' to return time
-
-    return 0.0;
+	return getTime(contextId);
 
 }
 
 void EmuUpdateStateDataKernel::setTime(ContextImpl& context, double time) {
     int contextId = getContextId(context);
 
-    // TODO: Implement this
-    // Call rust function and pass 'contextId', 'time'
+    setTime(contextId, time);
 
 }
 
