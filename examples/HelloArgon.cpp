@@ -21,6 +21,7 @@ void writePdbFrame(int frameNum, const OpenMM::State&);
 
 void simulateArgon()
 {
+    // for now, we commented out a bunch of stuff so that we can test a minimal set of kernels for the Emu platform
 
     // Load any shared libraries containing GPU implementations.
     OpenMM::Platform::loadPluginsFromDirectory(

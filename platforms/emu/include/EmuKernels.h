@@ -5,11 +5,8 @@
 #include "openmm/kernels.h"
 
 namespace OpenMM {
-    
-class ReferenceVerletDynamics;
 
-// TODO: Implement this
-
+// most of this 
 
 /**
  * This kernel is invoked at the beginning and end of force and energy computations.  It gives the
@@ -27,7 +24,7 @@ public:
      */
     void initialize(const System& system);
     /**
-     * This is called at the beginning of each force/energy computation, before calcForcesAndEnergy() has been called on
+     * This is called at the beginniPlatformDatang of each force/energy computation, before calcForcesAndEnergy() has been called on
      * any ForceImpl.
      *
      * @param context       the context in which to execute this kernel
@@ -213,8 +210,7 @@ public:
  */
 class EmuIntegrateVerletStepKernel : public IntegrateVerletStepKernel {
 public:
-    EmuIntegrateVerletStepKernel(std::string name, const Platform& platform, EmuPlatform::PlatformData& data) : IntegrateVerletStepKernel(name, platform),
-        data(data), dynamics(0) {
+    EmuIntegrateVerletStepKernel(std::string name, const Platform& platform, EmuPlatform::PlatformData& data) : IntegrateVerletStepKernel(name, platform) {
     }
     ~EmuIntegrateVerletStepKernel();
     /**
@@ -238,11 +234,6 @@ public:
      * @param integrator the VerletIntegrator this kernel is being used for
      */
     double computeKineticEnergy(ContextImpl& context, const VerletIntegrator& integrator);
-private:
-    EmuPlatform::PlatformData& data;
-    ReferenceVerletDynamics* dynamics;
-    std::vector<double> masses;
-    double prevStepSize;
 };
 
 } // namespace OpenMM

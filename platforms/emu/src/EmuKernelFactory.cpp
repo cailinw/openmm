@@ -9,9 +9,6 @@ using namespace OpenMM;
 KernelImpl* EmuKernelFactory::createKernelImpl(std::string name, const Platform& platform, ContextImpl& context) const {
     EmuPlatform::PlatformData& data = *static_cast<EmuPlatform::PlatformData*>(context.getPlatformData());
     int contextId = data.contextId;
-    
-    // TODO: Implement this
-    // Depending on given name, create and return a new KernelImpl object
 
     if (name == CalcForcesAndEnergyKernel::Name())
         return new EmuCalcForcesAndEnergyKernel(name, platform);

@@ -12,12 +12,6 @@
 #   libOpenMMEmu_static.a
 #----------------------------------------------------
 
-# SET(OPENMM_BUILD_EMU_TESTS TRUE CACHE BOOL "Whether to build Emu platform test cases")
-# MARK_AS_ADVANCED(OPENMM_BUILD_EMU_TESTS)
-# IF(BUILD_TESTING AND OPENMM_BUILD_EMU_TESTS)
-#     SUBDIRS(tests)
-# ENDIF(BUILD_TESTING AND OPENMM_BUILD_EMU_TESTS)
-
 # The source is organized into subdirectories, but we handle them all from
 # this CMakeLists file rather than letting CMake visit them as SUBDIRS.
 SET(OPENMM_SOURCE_SUBDIRS .)
@@ -92,11 +86,21 @@ ENDFOREACH(subdir)
 
 INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-# do Rust stuff
-
-# TODO maybe add something here that calls cargo build in emu_openmm before doing all this
+# there are a bunch of cmake files in the emu/cmake directory that help us use cmake with cargo
+# here, we compile the Rust library in emu/emu_openmm
+# then, in sharedTarget or in staticTarget, we link the library
+# finally, we can use functions defined in include/emu_openmm.h to call code that is written in emu_openmm/src/lib.rs
+# TODO it's possible that this won't work unless we first call "cargo build" in the emu_openmm directory
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/platforms/emu/cmake/")
 include(CMakeCargo)
+
+# also, more information on how the Rust-C++ FFI works with CMake is here-
+# https://blog.devolutions.net/2018/06/insider-series-using-rust-code-in-a-cc-project-with-cmake
+# https://github.com/ekse/cmake_rust_sample
+# https://github.com/Devolutions/CMakeRust <-- this is what we're basically using
+
+# also, we're just using a local copy of emu_core and emu_glsl (https://github.com/calebwin/emu)
+# in the near future, they will be published Rust crates
 
 # Install headers
 

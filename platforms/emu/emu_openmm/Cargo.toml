@@ -16,4 +16,4 @@ default-features = false
 features = ["glsl-compile"]
 
 [lib]
-crate-type = ["staticlib"]
+crate-type = ["staticlib"] # this ensure that we generate a static library, more details here: https://doc.rust-lang.org/reference/linkage.html

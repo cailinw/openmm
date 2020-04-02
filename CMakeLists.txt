@@ -354,11 +354,9 @@ IF(OPENMM_BUILD_CPU_LIB)
    ADD_SUBDIRECTORY(platforms/cpu)
 ENDIF(OPENMM_BUILD_CPU_LIB)
 
-# Emu platform *NEW*
+# Emu platform
 SET(OPENMM_BUILD_EMU_LIB ON CACHE BOOL "Build OpenMMEmu library")
-#IF(OPENMM_BUILD_EMU_LIB)
-   ADD_SUBDIRECTORY(platforms/emu)
-#ENDIF(OPENMM_BUILD_EMU_LIB)
+ADD_SUBDIRECTORY(platforms/emu) # TODO should there be an if statement here?
 
 # Amoeba plugin
 

@@ -20,22 +20,21 @@ public:
     }
     double getSpeed() const;
     bool supportsDoublePrecision() const;
-    // const std::string& getPropertyValue(const Context& context, const std::string& property) const;
-    // void setPropertyValue(Context& context, const std::string& property, const std::string& value) const;
-    void contextCreated(ContextImpl& context, const std::map<std::string, std::string>& properties);
+    void contextCreated(ContextImpl& context, const std::map<std::string, std::string>& properties) const;
     void linkedContextCreated(ContextImpl& context, ContextImpl& originalContext) const;
     void contextDestroyed(ContextImpl& context) const;
-    int numContexts;
+private:
+    static int numContexts;
 };
 
+// PlatformData is basically just a newtype wrapping contextId
+// we try to keep all state for each context on the Rust side and only keep the context ID on the C++ side
 class OPENMM_EXPORT_EMU EmuPlatform::PlatformData {
 public:
     PlatformData(const System& system, int contextId);
     ~PlatformData();
 
-    // TODO: Implement this
-    int contextId;
-    
+    int contextId;    
 };
 
 } // namespace OpenMM

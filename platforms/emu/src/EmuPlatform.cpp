@@ -1,13 +1,12 @@
 #include "EmuPlatform.h"
 #include "EmuKernels.h"
 #include "EmuKernelFactory.h"
-#include "openmm/internal/ContextImpl.h"
 #include "emu_openmm.h"
+#include "openmm/internal/ContextImpl.h"
 #include "openmm/Vec3.h"
 
 using namespace OpenMM;
 using namespace std;
-
 
 #ifdef OPENMM_EMU_BUILDING_STATIC_LIBRARY
 extern "C" void registerEmuPlatform() {
@@ -19,70 +18,47 @@ extern "C" OPENMM_EXPORT_EMU void registerPlatforms() {
 }
 #endif
 
+int EmuPlatform::numContexts;
 
-EmuPlatform::EmuPlatform() : numContexts(0) {
+EmuPlatform::EmuPlatform() {
     EmuKernelFactory* factory = new EmuKernelFactory();
     
-    // TODO: Implement this
-    // For each kernel, registerKernelFactory()
+    // currently, we only support the basic minimum required to run the code in the HelloArgon example
     registerKernelFactory(CalcForcesAndEnergyKernel::Name(), factory);
     registerKernelFactory(UpdateStateDataKernel::Name(), factory);
     registerKernelFactory(ApplyConstraintsKernel::Name(), factory);
     registerKernelFactory(VirtualSitesKernel::Name(), factory);
     registerKernelFactory(IntegrateVerletStepKernel::Name(), factory);
-
-    vector<Vec3> v;
-    v.push_back(Vec3());
-    v.push_back(Vec3());
-    v.push_back(Vec3());
-    v.push_back(Vec3());
-    do_something_on_gpu((CommonVec3*) v.data());
-    printf("%f\n", v[0].dot(v[0]));
 }
 
 double EmuPlatform::getSpeed() const {
-
-	// TODO: Implment this
-
-    return 5;
+    return 5; // this was just an estimate, a better cost model may be appropriate later on
 }
 
 bool EmuPlatform::supportsDoublePrecision() const {
-    return true;
+    return true; // Emu uses GLSL and WebGPU so 64-bit precision is supported
 }
 
-// TODO: Do we have platform specific properties?
-// getPropertyNames()
-// getPropertyValue()
-// setPropertyValue()
-// getPropertyDefaultValue()
-// setPropertyDefaultValue()
 
-
-void EmuPlatform::contextCreated(ContextImpl& context, const map<string, string>& properties) {
-
-    data_initialize(numContexts, context.getSystem().getNumParticles());
-
-    context.setPlatformData(new PlatformData(context.getSystem(), numContexts));
-    numContexts += 1;
+void EmuPlatform::contextCreated(ContextImpl& context, const map<string, string>& properties) const {
+    create_context(numContexts, context.getSystem().getNumParticles()); // create on Rust side
+    context.setPlatformData(new PlatformData(context.getSystem(), numContexts)); // create on C++ side
+    numContexts += 1; // we use a unique context ID for each context created
 }
 
 void EmuPlatform::linkedContextCreated(ContextImpl& context, ContextImpl& originalContext) const {
-    // TODO: Implement this
 }
 
 void EmuPlatform::contextDestroyed(ContextImpl& context) const {
     PlatformData* data = reinterpret_cast<PlatformData*>(context.getPlatformData());
+    destroy_context(data->contextId);
     delete data;
 }
 
 EmuPlatform::PlatformData::PlatformData(const System& system, int contextId) : 
                                         contextId(contextId) {
-
-    // TODO: Implement this
 }
 
 EmuPlatform::PlatformData::~PlatformData() {
-	// TODO: Implement this
 }
 
