@@ -87,7 +87,7 @@ macro_rules! make_sync_functions {
             pub fn sync_for_gpu_usage(context_id: i32) {
                 if CONTEXTS.lock().unwrap().get(&context_id).unwrap().$context_data_ident.2 == UpToDate::Cpu {
                     futures::executor::block_on(assert_device_pool_initialized());
-                    CONTEXTS.lock().unwrap().get_mut(&context_id).unwrap().$context_data_ident.0.set(&CONTEXTS.lock().unwrap().get(&context_id).unwrap().$context_data_ident.1);
+                    CONTEXTS.lock().unwrap().get_mut(&context_id).unwrap().$context_data_ident.0.set(CONTEXTS.lock().unwrap().get(&context_id).unwrap().$context_data_ident.1.as_slice());
                     CONTEXTS.lock().unwrap().get_mut(&context_id).unwrap().$context_data_ident.2 = UpToDate::CpuGpu;
                 }
             }
